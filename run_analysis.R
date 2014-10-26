@@ -42,8 +42,8 @@ subjecttest<-read.table("D:\\getandcleandata\\getdata-projectfiles-UCI HAR Datas
 		logmean <- grepl("mean",n)
 		if(logstd == TRUE)
 		{
-			colnamestd <-c(colnamestd,n)
-			extractstd <- cbind(extractstd,mergedata[,j])
+			colnamestd <-c(colnamestd,n)#save the column with std 
+			extractstd <- cbind(extractstd,mergedata[,j])#extract the data with std into extractstd
 		}
 		if(logmean == TRUE)
 		{
@@ -60,6 +60,7 @@ subjecttest<-read.table("D:\\getandcleandata\\getdata-projectfiles-UCI HAR Datas
 	colnames(activityLabels)<-activity 
 	ida<-activityLabels$ida
 	acivitytype<-mergedata$activitytype
+	#change the num to acivity type in the column of acivitytype
 	for(x in ida)
 	{
 		i<-0
@@ -114,16 +115,17 @@ subjecttest<-read.table("D:\\getandcleandata\\getdata-projectfiles-UCI HAR Datas
 		for(a in activity)
 		{
 			p<-as.character(p)
-			actperx <- paste(a,p, sep="")
+			actperx <- paste(a,p, sep="")#connect string as name
 			actper <- c(actper,actperx)
 			everyPA <- mergedata[which(mergedata$subject == p & mergedata$activitytype == a),]
 			nc <- ncol(everyPA)
 			e<-everyPA[,4:nc]
-			a<-apply(e[,1:561],2,mean)
+			a<-apply(e[,1:561],2,mean)#compute the mean
 			actpermean <- cbind(actpermean ,a)
 		}
 	}
-	colnames(actpermean) <- actper
+	colnames(actpermean) <- actper#change the column name
+	#save the data
 	write.table(actpermean,"result.txt",row.names=FALSE)
 
 
