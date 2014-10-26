@@ -169,6 +169,7 @@ subjecttest<-read.table("D:\\getandcleandata\\getdata-projectfiles-UCI HAR Datas
 	#add two columns in total,they are person and activitytype
 	total <- cbind(total ,activitytype)
 	total <- cbind(total ,person)
+	total<-as.data.frame(total)
 	View(total)
 	write.table(total,"result.txt",row.names=FALSE)
 
