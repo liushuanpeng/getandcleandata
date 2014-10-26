@@ -8,6 +8,7 @@ step three: Uses descriptive activity names to name the activities in the data s
 	    we use two for loop to find the activity number corresponding the activity name ,then let it change to the name.  
 
 step four: Appropriately labels the data set with descriptive variable names.
+
 	   I think the default variable name is perfectful,so I do not change it.
 
 step five:From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each        	  activity and each subject.
