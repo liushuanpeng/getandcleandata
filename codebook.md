@@ -1,6 +1,7 @@
 Variable Name   Values	    		
   
-activitytype		"STANDING"   "SITTING"   "LAYING"   "WALKING"   "WALKING_DOWNSTAIRS"							"WALKING_UPSTAIRS"
+activitytype		"STANDING"   "SITTING"   "LAYING"   "WALKING"   "WALKING_DOWNSTAIRS"								"WALKING_UPSTAIRS"
+
 subject			1:30(the number of person)
 
 feature			tBodyAcc-mean()-X
