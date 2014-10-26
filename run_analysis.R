@@ -31,8 +31,8 @@ subjecttest<-read.table("D:\\getandcleandata\\getdata-projectfiles-UCI HAR Datas
 #2:Extracts only the measurements on the mean and standard deviation for each measurement. 
 	j <- 0
 	colnam <- names(mergedata)
-	extractstd <- NULL
-	extractmean <- NULL
+	extractstd <- NULL #extract the data which include std
+	extractmean <- NULL #extract the data which include mean
 	colnamestd <- NULL
 	colnamemean <- NULL
 	for(n in colnam)
@@ -125,7 +125,6 @@ subjecttest<-read.table("D:\\getandcleandata\\getdata-projectfiles-UCI HAR Datas
 			actper <- c(actper,actperx)
 			everyPA <- extractstd[which(extractstd$subject == p & extractstd$activitytype == a),]
 			nc <- ncol(everyPA)
-			
 			nc<-nc-3
 			e<-everyPA[,1:nc]
 			em<-apply(e[,1:nc],2,mean)
@@ -165,6 +164,7 @@ subjecttest<-read.table("D:\\getandcleandata\\getdata-projectfiles-UCI HAR Datas
 	rownames(actpermean) <- actperA
 	
 	total<-cbind(actpermean,actperstd)
+	#add two columns in total,they are person and activitytype
 	total <- cbind(total ,activitytype)
 	total <- cbind(total ,person)
 	View(total)
