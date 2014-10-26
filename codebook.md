@@ -1,6 +1,7 @@
-Variable Name   	Values	    		
+Variable Name   	Values	  
+id:			1:10299(the number of rows)
   
-activitytype:		"STANDING"   "SITTING"   "LAYING"   "WALKING"   "WALKING_DOWNSTAIRS"								"WALKING_UPSTAIRS"
+activity:		"STANDING"   "SITTING"   "LAYING"   "WALKING"   "WALKING_DOWNSTAIRS"								"WALKING_UPSTAIRS"
 
 subject	:		1:30(the number of person)
 
@@ -9,22 +10,6 @@ feature	:		tBodyAcc-mean()-X
 			tBodyAcc-mean()-Z
 			tBodyAcc-std()-X
 			tBodyAcc-std()-Y
-			tBodyAcc-std()-Z
-			tBodyAcc-mad()-X
-			tBodyAcc-mad()-Y
-			tBodyAcc-mad()-Z
-			tBodyAcc-max()-X
-			tBodyAcc-max()-Y
-			tBodyAcc-max()-Z
-			tBodyAcc-min()-X
-			tBodyAcc-min()-Y
-			tBodyAcc-min()-Z
-			tBodyAcc-sma()
-			tBodyAcc-energy()-X
-			tBodyAcc-energy()-Y
-			tBodyAcc-energy()-Z
-			tBodyAcc-iqr()-X
-			tBodyAcc-iqr()-Y	
 			.
 			.
 			.
@@ -37,3 +22,4 @@ feature	:		tBodyAcc-mean()-X
 			angle(X,gravityMean)
 			angle(Y,gravityMean)
 			angle(Z,gravityMean)
+note:		some other variable have annotation in the run_analusis.R
