@@ -22,4 +22,5 @@ feature	:		tBodyAcc-mean()-X
 			angle(X,gravityMean)
 			angle(Y,gravityMean)
 			angle(Z,gravityMean)
+			
 note:		some other variable have annotation in the run_analusis.R
