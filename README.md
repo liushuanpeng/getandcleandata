@@ -1,3 +1,12 @@
+run code instruction:
+	
+	the data set input path : ("D:\getandcleandata\getdata-projectfiles-UCI HAR Dataset\UCI HAR Dataset")
+	
+	the run_analysis.R in the path : ("D:\getandcleandata")
+
+	in the code: merge the data set : x_train.txt, x_test.txt, y_train, y_test.txt, subject_train.txt, subject_test.txt
+					  activity_labels.txt, features.txt.then extract the column which include "std" and 						  "mean",then change the data which is 1--6 to corresponding value,for example : 2 					  corresponding "STANDING";9 corresponding "WALKING",then compute value in the step5.
+
 step one: Merges the training and the test sets to create one data set.
 	use rbind to merge xtest and xtrain to x,use rbind to merge ytest and ytrain to y,then extract the column from 			feature,assignment the column to x and y，then use rbind to merge subjecttest and subjecttrain to subject£，then add the 	"id" column tox,y and subject,finally,merge them to the result data.
 
