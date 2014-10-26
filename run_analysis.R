@@ -115,7 +115,9 @@ subjecttest<-read.table("D:\\getandcleandata\\getdata-projectfiles-UCI HAR Datas
 	everyPA <- NULL
 	actper <- NULL
 	actperstd <- NULL
-	
+	activitytype <- NULL
+	person <- NULL
+
 	for(p in sub)
 	{
 		for(a in activity)
