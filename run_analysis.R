@@ -102,31 +102,74 @@ subjecttest<-read.table("D:\\getandcleandata\\getdata-projectfiles-UCI HAR Datas
 #4:Appropriately labels the data set with descriptive variable names.
 	#I think the default variable name is perfectful
 #5:From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.
-	sub <- mergedata$subject	
+	extractstd <- cbind(extractstd,mergedata[,1:3])
+	extractmean <- cbind(extractmean,mergedata[,1:3])
+
+	sub <- extractstd$subject	
 	sub <- unique(sub)
-	activity <- mergedata$activitytype
+	activity <- extractstd$activitytype
 	activity <- unique(activity)
+
+	#extract the average include std 
+
 	everyPA <- NULL
 	actper <- NULL
-	actpermean <- NULL
-	pa<-0
+	actperstd <- NULL
+	
 	for(p in sub)
 	{
 		for(a in activity)
 		{
 			p<-as.character(p)
-			actperx <- paste(a,p, sep="")#connect string as name
+			actperx <- paste(a,p, sep="")
 			actper <- c(actper,actperx)
-			everyPA <- mergedata[which(mergedata$subject == p & mergedata$activitytype == a),]
+			everyPA <- extractstd[which(extractstd$subject == p & extractstd$activitytype == a),]
 			nc <- ncol(everyPA)
-			e<-everyPA[,4:nc]
-			a<-apply(e[,1:561],2,mean)#compute the mean
-			actpermean <- cbind(actpermean ,a)
+			
+			nc<-nc-3
+			e<-everyPA[,1:nc]
+			em<-apply(e[,1:nc],2,mean)
+			person <- c(person,p)
+			activitytype <- c(activitytype ,a)
+			actperstd <- rbind(actperstd ,em)
 		}
 	}
-	colnames(actpermean) <- actper#change the column name
-	#save the data
-	write.table(actpermean,"result.txt",row.names=FALSE)
+	
+	rownames(actperstd) <- actper
+	
+	#extract the average include mean 
+	everyPB <- NULL
+	actperA <- NULL
+	actpermean <- NULL
+	activitytype <- NULL
+	person <- NULL
+	for(p in sub)
+	{
+		for(a in activity)
+		{
+			p<-as.character(p)
+			actperx <- paste(a,p, sep="")
+			actperA <- c(actperA,actperx)
+			everyPB <- extractmean[which(extractmean$subject == p & extractmean$activitytype == a),]
+			nc <- ncol(everyPB)
+		
+			nc<-nc-3
+			e<-everyPB[,1:nc]
+			em<-apply(e[,1:nc],2,mean)
+			person <- c(person,p)
+			activitytype <- c(activitytype ,a)
+			actpermean <- rbind(actpermean ,em)
+		}
+	}
+	
+	rownames(actpermean) <- actperA
+	
+	total<-cbind(actpermean,actperstd)
+	total <- cbind(total ,activitytype)
+	total <- cbind(total ,person)
+	View(total)
+	write.table(total,"result.txt",row.names=FALSE)
+
 
 
 
